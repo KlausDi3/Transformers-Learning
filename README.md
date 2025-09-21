@@ -1,13 +1,89 @@
 # Transformers-Learning
 
-## 1. What is a Pipeline
+## 1. Environment Setup
+
+### 1.1 Required Libraries
+- **transformers**: HuggingFace core library  
+- **PyTorch** or **TensorFlow**: backend deep learning framework  
+  - Recommended: **PyTorch** (most official examples use it)
+
+---
+
+### 1.2 Installation Commands
+
+#### Install with PyTorch (recommended)
+```bash
+pip install transformers torch
+```
+
+#### Install with TensorFlow
+```bash
+pip install transformers tensorflow
+```
+
+---
+
+### 1.3 GPU Support
+**If you have an NVIDIA GPU:**
+- Install CUDA drivers + the correct PyTorch CUDA version
+- Example (CUDA 12.1):
+  ```bash
+  pip install torch --index-url https://download.pytorch.org/whl/cu121
+  ```
+
+**If you don't have a GPU:**
+- You can still run on CPU, but it will be slower
+
+---
+
+### 1.4 Version Compatibility
+Always check that your transformers version matches the installed backend (torch / tensorflow).
+
+**Example**: `transformers==4.44.0` works with `torch>=2.2.0`.
+
+**To check versions:**
+```bash
+pip show transformers
+pip show torch
+```
+
+---
+
+### 1.5 Optional Tools
+
+#### Datasets (for loading benchmark datasets):
+```bash
+pip install datasets
+```
+
+#### Accelerate (for hardware acceleration, distributed training):
+```bash
+pip install accelerate
+```
+
+#### Sentencepiece / Tokenizers (for multilingual models):
+```bash
+pip install sentencepiece
+pip install tokenizers
+```
+
+---
+
+### 1.6 Common Issues
+- ❌ **Error: CUDA not available** → Check driver and CUDA toolkit installation
+- ❌ **Version mismatch** → Align torch and transformers versions  
+- ❌ **Tokenizer errors** → Ensure proper installation of tokenizers or sentencepiece
+
+---
+
+## 2. What is a Pipeline
 - **Definition**: A Pipeline is a high-level interface provided by HuggingFace to quickly use pretrained models.  
 - **Purpose**: It bundles the entire workflow so you can go from input to output with just a few lines of code.  
 - **Core idea**: Experience NLP / CV / Speech models easily without dealing with low-level implementation details.  
 
 ---
 
-## 2. Supported Tasks (Detailed)
+## 3. Supported Tasks (Detailed)
 
 Pipelines support many **common NLP tasks**, as well as vision, speech, and multimodal tasks.  
 
@@ -61,7 +137,7 @@ Pipelines support many **common NLP tasks**, as well as vision, speech, and mult
 
 ---
 
-## 3. Usage Example
+## 4. Usage Example
 
 ### Install dependencies
 ```bash
@@ -90,7 +166,7 @@ result = classifier("I love HuggingFace Transformers!")
 
 ---
 
-## 4. Common Parameters
+## 5. Common Parameters
 - **model**: specify the pretrained model to use
 - **device**: choose hardware (CPU: -1, GPU: 0,1,...)
 - **max_length**: maximum length for text generation
@@ -99,7 +175,7 @@ result = classifier("I love HuggingFace Transformers!")
 
 ---
 
-## 5. Internal Workflow (Detailed)
+## 6. Internal Workflow (Detailed)
 A Pipeline follows a standardized data flow:
 
 ### 1. Preprocess
@@ -134,14 +210,14 @@ Internal steps are **Preprocess → Model → Postprocess**.
 
 ---
 
-## 6. Advantages
+## 7. Advantages
 - Quick to start, requires minimal code
 - Supports many tasks and pretrained models
 - Unified interface lowers the learning barrier
 
 ---
 
-## 7. Limitations
+## 8. Limitations
 - Default models may not fit all tasks or languages
 - Large models can be slow and memory intensive
 - Some tasks (e.g., QA) require structured input formats
@@ -149,7 +225,7 @@ Internal steps are **Preprocess → Model → Postprocess**.
 
 ---
 
-## 8. Beginner Learning Path
+## 9. Beginner Learning Path
 1. Start with sentiment analysis and text classification
 2. Learn to switch models (e.g., BERT, GPT2)
 3. Try more advanced tasks (generation, summarization, translation)
