@@ -83,11 +83,11 @@ pip install tokenizers
 
 ---
 
-## 3. Supported Tasks (Detailed)
+### 2.1 Supported Tasks (Detailed)
 
 Pipelines support many **common NLP tasks**, as well as vision, speech, and multimodal tasks.  
 
-### Text Tasks
+#### 2.1.1 Text Tasks
 1. **Sentiment Analysis (sentiment-analysis)**  
    - Function: Detect if text sentiment is positive or negative  
    - Use cases: Product reviews, customer feedback, opinion mining  
@@ -127,7 +127,7 @@ Pipelines support many **common NLP tasks**, as well as vision, speech, and mult
    - Use cases: Cross-language communication, content localization  
    - Output: Translated text  
 
-### Multimodal Tasks
+#### 2.1.2 Multimodal Tasks
 - **Image Classification (image-classification)**  
 - **Object Detection (object-detection)**  
 - **Automatic Speech Recognition (ASR)**  
@@ -137,36 +137,36 @@ Pipelines support many **common NLP tasks**, as well as vision, speech, and mult
 
 ---
 
-## 4. Usage Example
+### 2.2 Usage Example
 
-### Install dependencies
+#### Install dependencies
 ```bash
 pip install transformers torch
 ```
 
-### Import the pipeline function
+#### Import the pipeline function
 ```python
 from transformers import pipeline
 ```
 
-### Specify a task
+#### Specify a task
 ```python
 classifier = pipeline("sentiment-analysis")
 ```
 
-### Input data
+#### Input data
 ```python
 result = classifier("I love HuggingFace Transformers!")
 ```
 
-### Output result
+#### Output result
 ```python
 [{'label': 'POSITIVE', 'score': 0.99}]
 ```
 
 ---
 
-## 5. Common Parameters
+### 2.3 Common Parameters
 - **model**: specify the pretrained model to use
 - **device**: choose hardware (CPU: -1, GPU: 0,1,...)
 - **max_length**: maximum length for text generation
@@ -175,30 +175,30 @@ result = classifier("I love HuggingFace Transformers!")
 
 ---
 
-## 6. Internal Workflow (Detailed)
+### 2.4 Internal Workflow (Detailed)
 A Pipeline follows a standardized data flow:
 
-### 1. Preprocess
+#### 2.4.1 Preprocess
 - **Function**: Convert user input into a format the model understands
 - **Examples**:
   - Text → tokenizer → token IDs
   - Image → resize, normalization
   - Audio → feature extraction (MFCC, spectrogram)
 
-### 2. Model Inference (Forward)
+#### 2.4.2 Model Inference (Forward)
 - **Function**: Pass preprocessed input into the model to get raw outputs (logits / embeddings)
 - **Process**:
   - Transformer layers perform computations
   - Outputs hidden states, attention weights, prediction scores
 
-### 3. Postprocess
+#### 2.4.3 Postprocess
 - **Function**: Convert raw model outputs into human-readable results
 - **Examples**:
   - Classification: pick the label with highest probability
   - Text generation: decode tokens into natural text
   - Question answering: extract answer span from context
 
-### 4. Final Output
+#### 2.4.4 Final Output
 - Returns results as a Python dictionary or string
 - **Example**:
   ```python
@@ -210,14 +210,14 @@ Internal steps are **Preprocess → Model → Postprocess**.
 
 ---
 
-## 7. Advantages
+### 2.5 Advantages
 - Quick to start, requires minimal code
 - Supports many tasks and pretrained models
 - Unified interface lowers the learning barrier
 
 ---
 
-## 8. Limitations
+### 2.6 Limitations
 - Default models may not fit all tasks or languages
 - Large models can be slow and memory intensive
 - Some tasks (e.g., QA) require structured input formats
@@ -225,7 +225,7 @@ Internal steps are **Preprocess → Model → Postprocess**.
 
 ---
 
-## 9. Beginner Learning Path
+### 2.7 Beginner Learning Path
 1. Start with sentiment analysis and text classification
 2. Learn to switch models (e.g., BERT, GPT2)
 3. Try more advanced tasks (generation, summarization, translation)
